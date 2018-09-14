@@ -8,5 +8,5 @@ p = x % y;
 
 var a = 1, b = 2;
 writeln(a, b);
-a <=> b;
+a <=> b; // swap
 writeln(a, b);

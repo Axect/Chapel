@@ -33,10 +33,10 @@ class MyClass {
 var myObject = new MyClass(10);
 writeln(myObject.getMemberInt());
 
-var myDiffObject = new MyClass(-1, false);
+var myDiffObject = new MyClass(-1, false); // Generated
 writeln(myDiffObject.getMemberBool());
 
-var myOtherObject = new MyClass(1.95);
+var myOtherObject = new MyClass(1.95); // Explicit
 writeln(myOtherObject);
 
 proc +(A: MyClass, B: MyClass): MyClass {

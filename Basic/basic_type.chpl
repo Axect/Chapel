@@ -15,7 +15,7 @@ var intFromReal2: int = myReal : int;
 
 // type aliasing
 type chroma = int;
-type RGBColor = 3*chroma;
+type RGBColor = 3*chroma; // int tuple!
 var black: RGBColor = (0,0,0);
 var white: RGBColor = (255,255,255);
 
