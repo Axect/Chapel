@@ -1,4 +1,4 @@
-/* Documentation for ad */
+/* Automatic Differentiation */
 module ad {
   use Math;
 
@@ -14,6 +14,16 @@ module ad {
     }
   }
 
+  // ===========================================================================
+  // Convenience
+  // ===========================================================================
+  proc dual(x: real, dx: real) {
+    return new owned Dual(x, dx);
+  }
+
+  // ===========================================================================
+  // Ops with Dual
+  // ===========================================================================
   proc -(a: Dual) {
     var new_x = - a.x;
     var new_dx = - a.dx;
@@ -74,6 +84,49 @@ module ad {
     var new_x = cos(a.x);
     var new_dx = -sin(a.x) * a.dx;
     return new owned Dual(new_x, new_dx);
+  }
+
+  // ===========================================================================
+  // Ops with real
+  // ===========================================================================
+  proc +(a: Dual, b: real) {
+    return a + dual(b, 0);
+  }
+
+  proc +(a: real, b: Dual) {
+    return b + a;
+  }
+
+  proc -(a: Dual, b: real) {
+    return a - dual(b, 0);
+  }
+
+  proc -(a: real, b: Dual) {
+    return a + (-b);
+  }
+
+  proc *(a: Dual, b: real) {
+    return a * dual(b, 0);
+  }
+
+  proc *(a: real, b: Dual) {
+    return b * a;
+  }
+
+  proc /(a: Dual, b: real) {
+    return a / dual(b, 0);
+  }
+
+  proc /(a: real, b: Dual) {
+    return dual(a, 0) / b;
+  }
+
+  proc **(a: Dual, b: real) {
+    return a ** dual(b, 0);
+  }
+
+  proc **(a: real, b: Dual) {
+    return dual(a, 0) ** b;
   }
 
   // ===========================================================================
