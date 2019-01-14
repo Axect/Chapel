@@ -18,5 +18,3 @@ type chroma = int;
 type RGBColor = 3*chroma; // int tuple!
 var black: RGBColor = (0,0,0);
 var white: RGBColor = (255,255,255);
-
-writeln(white);
